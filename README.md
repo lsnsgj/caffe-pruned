@@ -43,4 +43,5 @@ Please cite Caffe in your publications if it helps your research:
 =======
     }
 参考博客 [CSDN](https://blog.csdn.net/zhouyusong_bupt/article/details/51728910#commentsedit)
+备注：python3版本，在docker u16.04_x86_64_cv3.4_py3_caffessd:v2中运行，模型确实压缩了，由于没有数据训练alexnet，所以没办法评估速度加速多少。
 >>>>>>> dd3268fc047834117d0800f8ff9ef9120e2716be
