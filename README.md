@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# caffe-pruned
+>>>>>>> dd3268fc047834117d0800f8ff9ef9120e2716be
 # Caffe
 
 [![Build Status](https://travis-ci.org/BVLC/caffe.svg?branch=master)](https://travis-ci.org/BVLC/caffe)
@@ -34,4 +38,9 @@ Please cite Caffe in your publications if it helps your research:
       Journal = {arXiv preprint arXiv:1408.5093},
       Title = {Caffe: Convolutional Architecture for Fast Feature Embedding},
       Year = {2014}
+<<<<<<< HEAD
     }
+=======
+    }
+参考博客 [CSDN](https://blog.csdn.net/zhouyusong_bupt/article/details/51728910#commentsedit)
+>>>>>>> dd3268fc047834117d0800f8ff9ef9120e2716be
