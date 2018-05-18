@@ -20,7 +20,13 @@ template <typename Dtype>
 class CuDNNTanHLayer : public TanHLayer<Dtype> {
  public:
   explicit CuDNNTanHLayer(const LayerParameter& param)
-      : TanHLayer<Dtype>(param), handles_setup_(false) {}
+      : TanHLayer<Dtype>(param), handles_setup_(false) {
+  cudnnCreateActivationDescriptor(&activation_tanh_);
+  cudnnSetActivationDescriptor(activation_tanh_,
+                               CUDNN_ACTIVATION_TANH,
+                               CUDNN_NOT_PROPAGATE_NAN,
+                               0);
+}
   virtual void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
@@ -37,6 +43,8 @@ class CuDNNTanHLayer : public TanHLayer<Dtype> {
   cudnnHandle_t             handle_;
   cudnnTensorDescriptor_t bottom_desc_;
   cudnnTensorDescriptor_t top_desc_;
+  //added by baijun
+  cudnnActivationDescriptor_t activation_tanh_;
 };
 #endif
 

@@ -20,7 +20,13 @@ template <typename Dtype>
 class CuDNNReLULayer : public ReLULayer<Dtype> {
  public:
   explicit CuDNNReLULayer(const LayerParameter& param)
-      : ReLULayer<Dtype>(param), handles_setup_(false) {}
+      : ReLULayer<Dtype>(param), handles_setup_(false) {
+  cudnnCreateActivationDescriptor(&activation_relu_);
+  cudnnSetActivationDescriptor(activation_relu_,
+                               CUDNN_ACTIVATION_RELU,
+                               CUDNN_NOT_PROPAGATE_NAN,
+                               0);
+}
   virtual void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
@@ -37,6 +43,8 @@ class CuDNNReLULayer : public ReLULayer<Dtype> {
   cudnnHandle_t             handle_;
   cudnnTensorDescriptor_t bottom_desc_;
   cudnnTensorDescriptor_t top_desc_;
+  //added by baijun
+  cudnnActivationDescriptor_t activation_relu_;
 };
 #endif
 
